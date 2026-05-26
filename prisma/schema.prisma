@@ -1,28 +1,30 @@
 datasource db {
   provider = "postgresql"
-  url = env("")
+  url      = env("DATABASE_URL")
 }
+
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id_user: String @id @default(uuid())
-  email String @unique
-  nome String
-  senha String
-  telefone_user String
-  birth_date DateTime
+model Cliente {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  nome      String
+  senha     String
+  cpf       String     @unique
   schedules Schedule[]
-  @@map("User")
+
+  @@map("clientes")
 }
 
 model Schedule {
-  id_schedule String @id @default(uuid())
-  servico String
-  barbeiro String
-  data_hora DateTime
-  userId String
-  user User @relation(fields:[userId], references:[id_user])
-  @@map("Schedule")
+  id_schedule String   @id @default(uuid())
+  servico     String
+  barbeiro    String
+  data_hora   DateTime
+  userId      String
+  cliente     Cliente  @relation(fields: [userId], references: [id])
+
+  @@map("schedules")
 }
