@@ -30,14 +30,14 @@ export default function Login(){
                         <div className="w-full h-12 shadow-lg flex items-center justify-center"> 
                             <Link href={"/"} className="text-gray-600">
                             {/* colocar link imagem do gogle aqui no href "roger" */}
-                                <img href=""/> 
+                                <img src="/google.png"/> 
                                 <span>Entrar com Google</span>
                             </Link>
                         </div>
                     </div>
 
                      <div className="flex items-center justify-center text-gray-600">
-                        <span>não possuir uma conta?<span className="text-orange-400 border-b-2 border-transparent hover:border-b-orange-400 transition-all"><Link href={"/auth/cadastro"}> cadastre-se </Link></span></span>
+                        <span>Não possui uma conta?<span className="text-orange-400 border-b-2 border-transparent hover:border-b-orange-400 transition-all"><Link href={"/auth/cadastro"}> Cadastre-se </Link></span></span>
                     </div>
                 </form>
             </section>

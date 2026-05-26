@@ -8,20 +8,20 @@ generator client {
 
 model User {
   id_user: String @id @default(uuid())
-  email: String @unique
-  nome: String
-  senha: String
-  telefone_user: String
-  birth_date: DateTime
+  email String @unique
+  nome String
+  senha String
+  telefone_user String
+  birth_date DateTime
   schedules Schedule[]
   @@map("User")
 }
 
 model Schedule {
-  id_schedule: String @id @default(uuid())
-  servico: String
-  barbeiro: String
-  data_hora: DateTime
+  id_schedule String @id @default(uuid())
+  servico String
+  barbeiro String
+  data_hora DateTime
   userId String
   user User @relation(fields:[userId], references:[id_user])
   @@map("Schedule")

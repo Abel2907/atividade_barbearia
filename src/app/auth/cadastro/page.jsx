@@ -39,7 +39,7 @@ export default function cadastro(){
                     <section>
                         <LoginInput nameLabel="WhatsApp" id="id-tel" type="tel" placeholder="(88) 9 9999-9999" pattern="[0-9]{2} [0-9]{1} [0-9]{4}-[0-9]{4}"></LoginInput>
                         <div className="flex justify-center gap-3 m-5 p-3 flex-col">
-                            <h4 className="font-bold">marque as opções que vocẽ tenha se interessar</h4>
+                            <h4 className="font-bold">Marque as opções que você possa se interessar</h4>
                             <label className="flex items-center gap-2 cursor-pointer">
                                 <input type="checkbox" value="corte" className="w-4 h-4" />
                                 <span>Corte de Cabelo</span>
