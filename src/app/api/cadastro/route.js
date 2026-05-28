@@ -1,15 +1,13 @@
-js
 import { PrismaClient } from "@prisma/client";
+import prisma from "@/lib/prismacliente";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const prisma = new PrismaClient();
-
 export async function POST(request) {
   try {
-    const { nome, email, senha, cpf } = await request.json();
+    const { nome, email, senha } = await request.json();
 
-    if (!nome || !email || !senha || !cpf) {
+    if (!nome || !email || !senha ) {
       return Response.json({ mensagem: "Campos obrigatórios" }, { status: 400 });
     }
 
@@ -18,15 +16,10 @@ export async function POST(request) {
       return Response.json({ mensagem: "Email já cadastrado" }, { status: 409 });
     }
 
-    const cpfExiste = await prisma.cliente.findUnique({ where: { cpf } });
-    if (cpfExiste) {
-      return Response.json({ mensagem: "CPF já cadastrado" }, { status: 409 });
-    }
-
     const senha_criptografada = await bcrypt.hash(senha, 10);
 
     const cliente = await prisma.cliente.create({
-      data: { nome, email, senha: senha_criptografada, cpf },
+      data: { nome, email, senha: senha_criptografada },
     });
 
     const token = jwt.sign(

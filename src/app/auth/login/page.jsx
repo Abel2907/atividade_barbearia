@@ -28,9 +28,9 @@ export default function Login(){
                     <div className="flex items-center justify-center flex-col m-6">
                         <p>ou</p>
                         <div className="w-full h-12 shadow-lg flex items-center justify-center"> 
-                            <Link href={"/"} className="text-gray-600">
+                            <Link href={"/"} className="text-gray-600 flex gap-2">
                             {/* colocar link imagem do gogle aqui no href "roger" */}
-                                <img src="/google.png"/> 
+                                <img src="/google.png" className="h-6"/> 
                                 <span>Entrar com Google</span>
                             </Link>
                         </div>

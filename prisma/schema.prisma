@@ -12,19 +12,17 @@ model Cliente {
   email     String     @unique
   nome      String
   senha     String
-  cpf       String     @unique
   schedules Schedule[]
 
   @@map("clientes")
 }
 
 model Schedule {
-  id_schedule String   @id @default(uuid())
+  id String   @id @default(uuid())
   servico     String
   barbeiro    String
-  data_hora   DateTime
-  userId      String
-  cliente     Cliente  @relation(fields: [userId], references: [id])
-
+  dataHora   DateTime
+  clienteId String   @map("cliente_id")
+  cliente   Cliente  @relation(fields: [clienteId], references: [id], onDelete: Cascade)
   @@map("schedules")
 }
