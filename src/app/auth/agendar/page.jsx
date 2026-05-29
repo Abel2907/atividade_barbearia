@@ -1,37 +1,78 @@
 "use client"
-export default function agendar(params) {
+import { useState } from "react";
+
+export default function Agendar() {
+    const [formData, setFormData] = useState({
+        data_hora: "",
+        servico: "",
+        barbeiro: ""
+    });
+
+    async function handleAgendar() {
+        const response = await fetch("/api/agendamento", { // ajuste o path da sua rota
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            alert("Agendado com sucesso!");
+        } else {
+            alert(data.mensagem);
+        }
+    }
+
     return (
-        <section  className="flex-col flex md:flex-row justify-center items-center gap-8">
-            <div className="w-full  bg-zinc-50 border-b border-zinc-200">
-                <h1 className="text-5xl font-bold text-center m-10 ">Agendar</h1>
+        <section className="flex flex-col gap-8 p-10 bg-zinc-50">
+            <h1 className="text-5xl font-bold text-center">Agendar</h1>
+
+            {/* Input de Data */}
+            <div className="flex flex-col gap-2">
+                <label className="text-amber-500 font-bold uppercase">Data</label>
+                <input 
+                    type="datetime-local" 
+                    className="bg-zinc-900 text-white p-3 rounded"
+                    onChange={(e) => setFormData({...formData, data_hora: e.target.value})}
+                />
             </div>
-            <div className="flex flex-col gap-2 max-w-sm md:w-1/2">
-                <label className="text-sm font-semibold text-amber-500 uppercase tracking-wider" >Seleciona a data do seu corte</label>
-                <input type="date" className="bg-zinc-900 text-white border-2 border-zinc-800 rounded-lg px-4 py-3 
-            outline-none focus:border-amber-500 transition-colors duration-300
-            appearance-none cursor-pointer"></input>
+
+            {/* Seleção de Serviço (Exemplo simplificado de Radio para evitar múltiplos) */}
+            <div>
+                <h2 className="text-amber-500 font-bold uppercase">Serviço</h2>
+                {["Corte", "Barba", "Sobrancelha"].map(s => (
+                    <label key={s} className="flex gap-2">
+                        <input 
+                            type="radio" 
+                            name="servico" 
+                            onChange={() => setFormData({...formData, servico: s})} 
+                        />
+                        {s}
+                    </label>
+                ))}
             </div>
-            <div className="md:w-1/2">
-                <h2 className="text-sm font-semibold text-amber-500 uppercase tracking-wider">escolha o serviço que vocẽ deseja</h2>
-                <div>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" value="corte" className="w-4 h-4" />
-                        <span>Sobrancelha</span>
+
+            {/* Seleção de Barbeiro */}
+            <div>
+                <h2 className="text-amber-500 font-bold uppercase">Barbeiro</h2>
+                {["Roger", "Bruno", "Samuel"].map(b => (
+                    <label key={b} className="flex gap-2">
+                        <input 
+                            type="radio" 
+                            name="barbeiro" 
+                            onChange={() => setFormData({...formData, barbeiro: b})} 
+                        />
+                        {b}
                     </label>
-                </div>
-                <div>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" value="corte" className="w-4 h-4" />
-                        <span>Corte de cabelo masculino</span>
-                    </label>
-                </div>
-                <div>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" value="corte" className="w-4 h-4" />
-                        <span>Barba</span>
-                    </label>
-                </div>
+                ))}
             </div>
+
+            <button 
+                onClick={handleAgendar}
+                className="bg-amber-500 text-white font-bold py-4 rounded hover:bg-amber-600 transition"
+            >
+                FINALIZAR AGENDAMENTO
+            </button>
         </section>
-    )
+    );
 }

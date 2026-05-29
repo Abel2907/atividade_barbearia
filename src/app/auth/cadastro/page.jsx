@@ -11,8 +11,6 @@ export default function Cadastro() {
         email: "",
         senha: ""
     });
-
-    // Adicionado o estado de carregamento que faltava no seu código
     const [carregando, setCarregando] = useState(false);
     const [estadoAtual, setEstadoAtual] = useState(0);
     const total = 3;
@@ -26,7 +24,6 @@ export default function Cadastro() {
     };
 
     const handleChange = (e) => {
-        // Importante: o 'name' do input deve ser igual à chave no formData (nome, email, senha)
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
@@ -34,7 +31,6 @@ export default function Cadastro() {
     const handleEnviar = async () => {
         setCarregando(true);
         try {
-            // Certifique-se que o caminho da API está correto (ex: /api/auth/register)
             const response = await fetch("/api/auth/register", {
                 method: "POST",
                 headers: {
