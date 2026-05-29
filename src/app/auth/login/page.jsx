@@ -63,13 +63,27 @@ export default function Login() {
                             Entrar
                         </button>
                         <div className="rounded-2xl w-1/2 h-12 shadow-lg flex justify-center items-center p-2">
-                            <Link href={"/"} className="text-gray-600">Esqueceu a senha?</Link>
+                            <Link href={"/"} className="text-orange-400">Esqueceu a senha?</Link>
                         </div>
                     </div>
-                    {/* ... resto do seu código (Google, etc) */}
+                    <div className="flex items-center justify-center text-black">
+                        <span>não possuir uma conta?<span className="text-orange-500 border-b-2 border-transparent hover:border-b-orange-400 transition-all"><Link href={"/auth/cadastro"}> cadastre-se </Link></span></span>
+                    </div>
+                    <div className="flex items-center justify-center flex-col m-6">
+                        <p>ou</p>
+                        <div className="w-full h-12 shadow-lg flex items-center justify-center"> 
+                            <Link href={"/"
+                            } className="text-gray-600 flex gap-2">
+                                <img src="/google.png" className="h-6"/> 
+                                <span>Entrar com Google</span>
+                            </Link>
+                        </div>
+                    </div>
                 </form>
             </section>
-            {/* ... section da imagem */}
+            <section className="hidden lg:flex lg:w-1/2 m-10 ml-72 items-center">
+                <img src='/barbearialogin.png' alt="Logo Barbearia" className="object-cover rounded-2xl" />
+            </section>
         </main>
     )
 }

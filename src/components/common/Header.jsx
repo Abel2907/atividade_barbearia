@@ -6,10 +6,9 @@ export default function Header(){
     return(
         <header>
             <nav className="bg-black flex w-full h-25 justify-between">
-{/* roger colocat nome marca e foto no src span dentro do public */}
                 <div className="flex  items-center m-3 gap-2">
                     <span><img src="/" alt="logo-img"/></span>
-                    <span><h1 className="text-amber-600 font-bold text-2xl ">NOME MARCA</h1></span> 
+                    <span><h1 className="text-amber-600 font-bold text-2xl ">top-barbearia</h1></span> 
                 </div>
 
                 <ListLink className={'hidden md:flex items-end'}></ListLink>

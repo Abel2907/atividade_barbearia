@@ -18,9 +18,11 @@ services:
     restart: always
     ports:
       - "3000:3000"
+      - "5555:5555"
     environment:
-      DATABASE_URL: ${DATABASE_URL}
-      JWT_SECRET: ${JWT_SECRET}
+      # URL apontando para o serviço "db"
+      DATABASE_URL: "postgresql://admin:senha-barbearia-banco@db:5432/barbearia_db?schema=public"
+      JWT_SECRET: "sua_chave_secreta_aqui"
     depends_on:
       - db
         
