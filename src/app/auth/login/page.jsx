@@ -67,7 +67,7 @@ export default function Login() {
                         </div>
                     </div>
                     <div className="flex items-center justify-center text-black">
-                        <span>não possuir uma conta?<span className="text-orange-500 border-b-2 border-transparent hover:border-b-orange-400 transition-all"><Link href={"/auth/cadastro"}> cadastre-se </Link></span></span>
+                        <span>Não possui uma conta?<span className="text-orange-500 border-b-2 border-transparent hover:border-b-orange-400 transition-all"><Link href={"/auth/cadastro"}> cadastre-se </Link></span></span>
                     </div>
                     <div className="flex items-center justify-center flex-col m-6">
                         <p>ou</p>
